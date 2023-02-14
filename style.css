@@ -1,46 +1,8 @@
-/* body {
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
-}
-#canvas {
-  display: block;
-  margin: 0 auto;
-  border: 1px solid #000;
-  background-color: #fff;
-}
-#tools {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-}
-#color-picker {
-  width: 50px;
-  height: 30px;
-  border: none;
-}
-#size-slider {
-  width: 100px;
-}
-#save-button {
-  padding: 5px 10px;
-  background-color: #0070c0;
-  border: none;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#save-button:hover {
-  background-color: #00579c;
-} */
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #c4d2d9;
 }
 #canvas {
   display: block;
@@ -53,6 +15,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  margin-top: 10px;
   background-color: #fff;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
@@ -74,4 +37,41 @@ body {
 }
 #save-button:hover {
   background-color: #00579c;
+}
+
+#eraseButton {
+  padding: 5px 10px;
+  background-color: #0c324e;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#eraseButton:hover {
+  opacity: 0.8;
+}
+
+#clearButton {
+  padding: 5px 10px;
+  background-color: #f55e34;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#clearButton:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 750px) {
+  #canvas {
+    display: block;
+    height: 90vh;
+    width: 90vw;
+
+    margin: 0 auto;
+    border: 1px solid #000;
+    background-color: #fff;
+  }
 }
