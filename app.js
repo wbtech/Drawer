@@ -6,7 +6,29 @@ let lastX = 0;
 let lastY = 0;
 let hue = 0;
 let size = 10;
+let isErasing = false;
+let lastMouseX, lastMouseY;
 
+//erase
+
+const eraseButton = document.getElementById("eraseButton");
+// eraseButton.addEventListener("click", function () {
+//   isErasing = !isErasing; //toggle the erase state on each click
+//   eraseButton.style.background = isErasing ? "red" : "blue";
+// });
+
+// //add a mouse down event listener to start erasing
+// canvas.addEventListener("mousedown", function (event) {
+//   if (isErasing) {
+//     lastMouseX = event.clientX - canvas.offsetLeft;
+//     lastMouseY = event.clientY - canvas.offsetTop;
+//     ctx.globalCompositeOperation = "destination-out";
+//   }
+// });
+
+//add mouse event to erase
+
+//draw on canvas
 function draw(e) {
   if (!isDrawing) return;
 
@@ -18,6 +40,7 @@ function draw(e) {
   ctx.beginPath();
   ctx.moveTo(lastX, lastY);
   ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.strokeStyle = currentColor;
   ctx.stroke();
 
   // update lastX and lastY variables
@@ -25,6 +48,14 @@ function draw(e) {
   lastY = e.offsetY;
   // hue = (hue + 1) % 360;
 }
+
+//Clear Canvas
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+const clearButton = document.getElementById("clearButton");
+clearButton.addEventListener("click", clearCanvas);
 
 canvas.addEventListener("mousedown", (e) => {
   isDrawing = true;
@@ -35,9 +66,12 @@ canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mouseup", () => (isDrawing = false));
 canvas.addEventListener("mouseout", () => (isDrawing = false));
 
-const colorPicker = document.getElementById("color-picker");
-colorPicker.addEventListener("change", () => {
-  hue = parseInt(colorPicker.value.slice(1), 16);
+//Color
+let currentColor = "black";
+
+const colorInput = document.getElementById("color-picker");
+colorInput.addEventListener("change", () => {
+  currentColor = colorInput.value;
 });
 
 const sizeSlider = document.getElementById("size-slider");
